@@ -1,3 +1,12 @@
-#canvas {
-    border: 1px solid #000;
+.tools {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+}
+
+.tools>button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
 }
