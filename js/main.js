@@ -39,7 +39,7 @@ const main = () => {
             case 'brush':
                 isPressing = true
                 lastPoint = { x, y }
-                drawCircle(x, y, 50)
+                drawCircle(x, y, 10)
                 break
             case 'eraser':
                 break
@@ -54,8 +54,8 @@ const main = () => {
         switch (seleted) {
             case 'brush':
                 if (isPressing) {
-                    drawCircle(x, y, 50)
-                    drawLine(lastPoint, { x, y }, 100)
+                    drawCircle(x, y, 10)
+                    drawLine(lastPoint, { x, y }, 20)
                     lastPoint = { x, y }
                 }
                 break
