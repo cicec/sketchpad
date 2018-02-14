@@ -31,8 +31,9 @@ const main = () => {
 
     const tools = {
         brush: { id: 1, width: 20, color: '#000000' },
-        eraser: { id: 2, width: 20 }
+        eraser: { id: 2, width: 40 }
     }
+    const canvasColor = '#ffffff'
 
     let isPressing = false
     let selectedId = tools.brush.id
@@ -49,15 +50,17 @@ const main = () => {
         const y = event.clientY
         isPressing = true
         switch (selectedId) {
-            case tools.brush.id:
+            case tools.brush.id: {
                 lastPoint = { x, y }
                 drawCircle(x, y, tools.brush.width, tools.brush.color)
                 break
-            case tools.eraser.id:
-                context.clearRect(x, y, tools.eraser.width, tools.eraser.width)
+            }
+            case tools.eraser.id: {
+                lastPoint = { x, y }
+                drawCircle(x, y, tools.eraser.width, canvasColor)
                 break
-            default:
-                break
+            }
+            default: break
         }
     }
 
@@ -66,14 +69,18 @@ const main = () => {
         const x = event.clientX
         const y = event.clientY
         switch (selectedId) {
-            case tools.brush.id:
+            case tools.brush.id: {
                 drawCircle(x, y, tools.brush.width, tools.brush.color)
                 drawLine(lastPoint, { x, y }, tools.brush.width, tools.brush.color)
                 lastPoint = { x, y }
                 break
-            case tools.eraser.id:
-                context.clearRect(x, y, tools.eraser.width, tools.eraser.width)
+            }
+            case tools.eraser.id: {
+                drawCircle(x, y, tools.eraser.width, canvasColor)
+                drawLine(lastPoint, { x, y }, tools.eraser.width, canvasColor)
+                lastPoint = { x, y }
                 break
+            }
             default:
                 break
         }
