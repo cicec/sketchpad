@@ -1,6 +1,14 @@
 const canvas = document.getElementById('canvas')
 const context = canvas.getContext('2d')
 
+const createNode = (tag, attributes) => {
+    const node = document.createElement(tag)
+    Object.keys(attributes).forEach((key) => {
+        node[key] = attributes[key]
+    })
+    return node
+}
+
 const coverPage = () => {
     const pageWidth = document.documentElement.clientWidth
     const pageHeight = document.documentElement.clientHeight
@@ -30,7 +38,7 @@ const main = () => {
     window.onresize = coverPage
 
     const tools = {
-        brush: { id: 1, width: 20, color: '#000000' },
+        brush: { id: 1, width: 5, color: '#000000' },
         eraser: { id: 2, width: 40 }
     }
     const canvasColor = '#ffffff'
@@ -45,9 +53,7 @@ const main = () => {
     brush.onclick = () => { selectedId = tools.brush.id }
     eraser.onclick = () => { selectedId = tools.eraser.id }
 
-    canvas.onmousedown = (event) => {
-        const x = event.clientX
-        const y = event.clientY
+    const pressStart = (x, y) => {
         isPressing = true
         switch (selectedId) {
             case tools.brush.id: {
@@ -64,10 +70,8 @@ const main = () => {
         }
     }
 
-    canvas.onmousemove = (event) => {
+    const pressMove = (x, y) => {
         if (!isPressing) return
-        const x = event.clientX
-        const y = event.clientY
         switch (selectedId) {
             case tools.brush.id: {
                 drawCircle(x, y, tools.brush.width, tools.brush.color)
@@ -81,13 +85,44 @@ const main = () => {
                 lastPoint = { x, y }
                 break
             }
-            default:
-                break
+            default: break
         }
     }
 
-    canvas.onmouseup = () => {
-        isPressing = false
+    const pressEnd = () => { isPressing = false }
+
+    if ('ontouchstart' in document.body) {
+        canvas.ontouchstart = (event) => {
+            const x = event.touches[0].clientX
+            const y = event.touches[0].clientY
+            pressStart(x, y)
+        }
+
+        canvas.ontouchmove = (event) => {
+            const x = event.touches[0].clientX
+            const y = event.touches[0].clientY
+            pressMove(x, y)
+        }
+
+        canvas.ontouchend = () => {
+            pressEnd()
+        }
+    } else {
+        canvas.onmousedown = (event) => {
+            const x = event.clientX
+            const y = event.clientY
+            pressStart(x, y)
+        }
+
+        canvas.onmousemove = (event) => {
+            const x = event.clientX
+            const y = event.clientY
+            pressMove(x, y)
+        }
+
+        canvas.onmouseup = () => {
+            pressEnd()
+        }
     }
 }
 

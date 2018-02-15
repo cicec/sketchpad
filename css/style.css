@@ -1,12 +1,32 @@
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+ }
+
+ body {
+     overflow: hidden;
+ }
+
+.canvas {
+    background: #ffffff;
+}
+
 .tools {
     position: fixed;
     top: 40px;
     right: 40px;
 }
 
-.tools>button {
+.tools button {
     border: none;
     background: transparent;
     outline: none;
     cursor: pointer;
+    font-size: 32px;
+}
+
+@media (max-width: 768px) {
+    
 }

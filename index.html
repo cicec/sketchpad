@@ -11,13 +11,22 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="1000" height="600"></canvas>
+    <canvas id="canvas" class="canvas"></canvas>
 
     <div class="tools">
-        <button id="brush" class="brush">画笔</button>
-        <button id="eraser" class="eraser">橡皮</button>
+        <button id="brush" class="brush">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-brush_fill"></use>
+            </svg>
+        </button>
+        <button id="eraser" class="eraser">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-eraser-variant"></use>
+            </svg>
+        </button>
     </div>
 
+    <script src="//at.alicdn.com/t/font_570428_hi3i3bacd5wb3xr.js"></script>
     <script src="js/main.js"></script>
 </body>
 
