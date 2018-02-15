@@ -28,10 +28,13 @@ body {
     cursor: pointer;
     font-size: 32px;
     margin: 0 8px;
+    width: 54px;
+    height: 54px;
 }
 
-.tools .clear {
-    font-size: 29px;
+.tools button.active {
+    background: #FFCC00;
+    border-radius: 8px;
 }
 
 @media (max-width: 768px) {

@@ -38,8 +38,18 @@ const main = () => {
     window.onresize = coverPage
 
     const tools = {
-        brush: { id: 1, width: 5, color: '#000000' },
-        eraser: { id: 2, width: 40 }
+        brush: { id: 1, width: 5, color: '#000000', btn: document.getElementById('brush') },
+        eraser: { id: 2, width: 40, btn: document.getElementById('eraser') },
+        clear: { btn: document.getElementById('clear') },
+        uncheckAllBtn: () => {
+            Object.keys(tools).forEach((key) => {
+                if (tools[key] instanceof Function) return
+                tools[key].btn.classList.remove('active')
+            })
+        },
+        checkBtn: (btn) => {
+            btn.classList.add('active')
+        }
     }
     const canvasColor = '#ffffff'
 
@@ -47,15 +57,17 @@ const main = () => {
     let selectedId = tools.brush.id
     let lastPoint = {}
 
-    const brush = document.getElementById('brush')
-    const eraser = document.getElementById('eraser')
-    const clear = document.getElementById('clear')
-
-    brush.onclick = () => { selectedId = tools.brush.id }
-    eraser.onclick = () => { selectedId = tools.eraser.id }
-    clear.onclick = () => {
-        context.clearRect(0, 0, canvas.width, canvas.height)
+    tools.brush.btn.onclick = () => {
+        tools.uncheckAllBtn()
+        tools.checkBtn(tools.brush.btn)
+        selectedId = tools.brush.id
     }
+    tools.eraser.btn.onclick = () => {
+        tools.uncheckAllBtn()
+        tools.checkBtn(tools.eraser.btn)
+        selectedId = tools.eraser.id
+    }
+    tools.clear.btn.onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height) }
 
     const pressStart = (x, y) => {
         isPressing = true
