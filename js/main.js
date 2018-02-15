@@ -49,9 +49,13 @@ const main = () => {
 
     const brush = document.getElementById('brush')
     const eraser = document.getElementById('eraser')
+    const clear = document.getElementById('clear')
 
     brush.onclick = () => { selectedId = tools.brush.id }
     eraser.onclick = () => { selectedId = tools.eraser.id }
+    clear.onclick = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height)
+    }
 
     const pressStart = (x, y) => {
         isPressing = true

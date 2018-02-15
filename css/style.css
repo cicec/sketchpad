@@ -1,22 +1,24 @@
 .icon {
-    width: 1em; height: 1em;
+    width: 1em;
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
- }
+}
 
- body {
-     overflow: hidden;
- }
+body {
+    overflow: hidden;
+}
 
 .canvas {
     background: #ffffff;
+    margin: 0;
 }
 
 .tools {
-    position: fixed;
-    top: 40px;
-    right: 40px;
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
 }
 
 .tools button {
@@ -25,8 +27,17 @@
     outline: none;
     cursor: pointer;
     font-size: 32px;
+    margin: 0 8px;
+}
+
+.tools .clear {
+    font-size: 29px;
 }
 
 @media (max-width: 768px) {
-    
+    .tools {
+        left: 20px;
+        right: 20px;
+        bottom: 10px;
+    }
 }
