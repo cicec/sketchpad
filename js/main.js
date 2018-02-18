@@ -1,14 +1,6 @@
 const canvas = document.getElementById('canvas')
 const context = canvas.getContext('2d')
 
-const createNode = (tag, attributes) => {
-    const node = document.createElement(tag)
-    Object.keys(attributes).forEach((key) => {
-        node[key] = attributes[key]
-    })
-    return node
-}
-
 const coverPage = () => {
     const pageWidth = document.documentElement.clientWidth
     const pageHeight = document.documentElement.clientHeight
@@ -38,18 +30,30 @@ const main = () => {
     window.onresize = coverPage
 
     const tools = {
-        brush: { id: 1, width: 5, color: '#000000', btn: document.getElementById('brush') },
-        eraser: { id: 2, width: 40, btn: document.getElementById('eraser') },
-        clear: { btn: document.getElementById('clear') },
-        uncheckAllBtn: () => {
-            Object.keys(tools).forEach((key) => {
-                if (tools[key] instanceof Function) return
-                tools[key].btn.classList.remove('active')
-            })
+        brush: {
+            id: 1,
+            width: 5,
+            color: '#36435E',
+            btn: document.getElementById('brush'),
+            changeWidth: (width) => { tools.brush.width = width },
+            changeColor: (color) => { tools.brush.color = color },
         },
-        checkBtn: (btn) => {
-            btn.classList.add('active')
-        }
+        eraser: {
+            id: 2,
+            width: 40,
+            btn: document.getElementById('eraser')
+        },
+        clear: { btn: document.getElementById('clear') },
+        palette: [
+            { btn: document.getElementById('color1'), color: '#E4001F' },
+            { btn: document.getElementById('color2'), color: '#FBCF00' },
+            { btn: document.getElementById('color3'), color: '#00D09C' },
+            { btn: document.getElementById('color4'), color: '#4389F2' },
+            { btn: document.getElementById('color5'), color: '#6D00A2' },
+            { btn: document.getElementById('color6'), color: '#36435E' },
+        ],
+        uncheckBtn: (btn) => { btn.classList.remove('active') },
+        checkBtn: (btn) => { btn.classList.add('active') }
     }
     const canvasColor = '#ffffff'
 
@@ -58,16 +62,22 @@ const main = () => {
     let lastPoint = {}
 
     tools.brush.btn.onclick = () => {
-        tools.uncheckAllBtn()
+        tools.uncheckBtn(tools.eraser.btn)
         tools.checkBtn(tools.brush.btn)
         selectedId = tools.brush.id
     }
     tools.eraser.btn.onclick = () => {
-        tools.uncheckAllBtn()
+        tools.uncheckBtn(tools.brush.btn)
         tools.checkBtn(tools.eraser.btn)
         selectedId = tools.eraser.id
     }
     tools.clear.btn.onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height) }
+
+    tools.palette.forEach((item) => {
+        item.btn.onclick = () => {
+            tools.brush.changeColor(item.color)
+        }
+    })
 
     const pressStart = (x, y) => {
         isPressing = true

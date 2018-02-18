@@ -18,7 +18,8 @@ body {
 .tools {
     position: absolute;
     bottom: 40px;
-    left: 60px;
+    left: 100px;
+    right: 100px;
 }
 
 .tools button {
@@ -35,6 +36,50 @@ body {
 .tools button.active {
     background: #FFCC00;
     border-radius: 8px;
+}
+
+.tools .palette {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.tools .palette {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.tools .palette .color {
+    width: 30px;
+    height: 30px;
+    background: #00D09C;
+    border-radius: 100%;
+    margin: 10px 0;
+}
+
+.tools .palette .color:nth-child(1) {
+    background: #E4001F;
+}
+
+.tools .palette .color:nth-child(2) {
+    background: #FBCF00;
+}
+
+.tools .palette .color:nth-child(3) {
+    background: #00D09C;
+}
+
+.tools .palette .color:nth-child(4) {
+    background: #4389F2;
+}
+
+.tools .palette .color:nth-child(5) {
+    background: #6D00A2;
+}
+
+.tools .palette .color:nth-child(6) {
+    background: #36435E;
 }
 
 @media (max-width: 768px) {
