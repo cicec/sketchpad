@@ -32,7 +32,7 @@ const main = () => {
     const tools = {
         brush: {
             id: 1,
-            width: 5,
+            width: 2,
             color: '#36435E',
             btn: document.getElementById('brush'),
             changeWidth: (width) => { tools.brush.width = width },
@@ -51,6 +51,11 @@ const main = () => {
             { btn: document.getElementById('color4'), color: '#4389F2' },
             { btn: document.getElementById('color5'), color: '#6D00A2' },
             { btn: document.getElementById('color6'), color: '#36435E' },
+        ],
+        widthControl: [
+            { btn: document.getElementById('width-small'), width: 2 },
+            { btn: document.getElementById('width-medium'), width: 5 },
+            { btn: document.getElementById('width-large'), width: 20 },
         ],
         uncheckBtn: (btn) => { btn.classList.remove('active') },
         checkBtn: (btn) => { btn.classList.add('active') }
@@ -76,6 +81,12 @@ const main = () => {
     tools.palette.forEach((item) => {
         item.btn.onclick = () => {
             tools.brush.changeColor(item.color)
+        }
+    })
+
+    tools.widthControl.forEach((item) => {
+        item.btn.onclick = () => {
+            tools.brush.changeWidth(item.width)
         }
     })
 

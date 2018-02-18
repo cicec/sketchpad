@@ -13,8 +13,16 @@
 <body>
     <canvas id="canvas" class="canvas"></canvas>
 
-    <div class="tools">
-        <button id="brush" class="brush">
+    <div class="top-tools">
+        <div class="width-control">
+            <button id="width-large"></button>
+            <button id="width-medium"></button>
+            <button id="width-small"></button>
+        </div>
+    </div>
+
+    <div class="bottom-tools">
+        <button id="brush" class="brush active">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-brush_fill"></use>
             </svg>
@@ -22,6 +30,11 @@
         <button id="eraser" class="eraser">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-eraser-variant"></use>
+            </svg>
+        </button>
+        <button id="clear" class="clear">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-trash"></use>
             </svg>
         </button>
         <button id="clear" class="clear">

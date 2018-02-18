@@ -6,6 +6,17 @@
     overflow: hidden;
 }
 
+button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
 body {
     overflow: hidden;
 }
@@ -15,42 +26,69 @@ body {
     margin: 0;
 }
 
-.tools {
+.top-tools {
+    position: absolute;
+    top: 40px;
+    left: 100px;
+    right: 100px;
+}
+
+.top-tools .width-control>button::after {
+    content: '';
+    display: block;
+    background: #36435E;
+    width: 50px;
+    margin: 10px 0;
+}
+
+.top-tools .width-control>button:nth-child(1)::after {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.top-tools .width-control>button:nth-child(2)::after {
+    height: 5px;
+    border-radius: 2.5px;
+}
+
+.top-tools .width-control>button:nth-child(3)::after {
+    height: 2px;
+    border-radius: 1px;
+}
+
+.bottom-tools {
     position: absolute;
     bottom: 40px;
     left: 100px;
     right: 100px;
 }
 
-.tools button {
-    border: none;
-    background: transparent;
-    outline: none;
-    cursor: pointer;
+.bottom-tools button {
     font-size: 32px;
-    margin: 0 8px;
+    margin: 0 4px;
     width: 54px;
     height: 54px;
 }
 
-.tools button.active {
+
+.bottom-tools button.active {
     background: #FFCC00;
     border-radius: 8px;
 }
 
-.tools .palette {
+.bottom-tools .palette {
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-.tools .palette {
+.bottom-tools .palette {
     position: absolute;
     bottom: 0;
     right: 0;
 }
 
-.tools .palette .color {
+.bottom-tools .palette .color {
     width: 30px;
     height: 30px;
     background: #00D09C;
@@ -58,32 +96,37 @@ body {
     margin: 10px 0;
 }
 
-.tools .palette .color:nth-child(1) {
+.bottom-tools .palette .color:nth-child(1) {
     background: #E4001F;
 }
 
-.tools .palette .color:nth-child(2) {
+.bottom-tools .palette .color:nth-child(2) {
     background: #FBCF00;
 }
 
-.tools .palette .color:nth-child(3) {
+.bottom-tools .palette .color:nth-child(3) {
     background: #00D09C;
 }
 
-.tools .palette .color:nth-child(4) {
+.bottom-tools .palette .color:nth-child(4) {
     background: #4389F2;
 }
 
-.tools .palette .color:nth-child(5) {
+.bottom-tools .palette .color:nth-child(5) {
     background: #6D00A2;
 }
 
-.tools .palette .color:nth-child(6) {
+.bottom-tools .palette .color:nth-child(6) {
     background: #36435E;
 }
 
 @media (max-width: 768px) {
-    .tools {
+    .top-tools {
+        left: 20px;
+        right: 20px;
+        top: 10px;
+    }
+    .bottom-tools {
         left: 20px;
         right: 20px;
         bottom: 10px;
