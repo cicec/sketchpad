@@ -33,6 +33,11 @@ body {
     right: 100px;
 }
 
+.top-tools .width-control {
+    display: flex;
+    align-items: center;
+}
+
 .top-tools .width-control>button::after {
     content: '';
     display: block;

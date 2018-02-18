@@ -44,6 +44,7 @@ const main = () => {
             btn: document.getElementById('eraser')
         },
         clear: { btn: document.getElementById('clear') },
+        download: { btn: document.getElementById('download') },
         palette: [
             { btn: document.getElementById('color1'), color: '#E4001F' },
             { btn: document.getElementById('color2'), color: '#FBCF00' },
@@ -60,7 +61,6 @@ const main = () => {
         uncheckBtn: (btn) => { btn.classList.remove('active') },
         checkBtn: (btn) => { btn.classList.add('active') }
     }
-    const canvasColor = '#ffffff'
 
     let isPressing = false
     let selectedId = tools.brush.id
@@ -77,6 +77,15 @@ const main = () => {
         selectedId = tools.eraser.id
     }
     tools.clear.btn.onclick = () => { context.clearRect(0, 0, canvas.width, canvas.height) }
+    tools.download.btn.onclick = () => {
+        const base64Img = canvas.toDataURL()
+        const oA = document.createElement('a')
+        oA.href = base64Img
+        oA.download = '我的作品.png'
+        const event = document.createEvent('MouseEvents')
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        oA.dispatchEvent(event)
+    }
 
     tools.palette.forEach((item) => {
         item.btn.onclick = () => {
@@ -100,7 +109,7 @@ const main = () => {
             }
             case tools.eraser.id: {
                 lastPoint = { x, y }
-                drawCircle(x, y, tools.eraser.width, canvasColor)
+                context.clearRect(x, y, 50, 50)
                 break
             }
             default: break
@@ -117,8 +126,7 @@ const main = () => {
                 break
             }
             case tools.eraser.id: {
-                drawCircle(x, y, tools.eraser.width, canvasColor)
-                drawLine(lastPoint, { x, y }, tools.eraser.width, canvasColor)
+                context.clearRect(x, y, 50, 50)
                 lastPoint = { x, y }
                 break
             }
