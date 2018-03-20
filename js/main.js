@@ -144,6 +144,7 @@ const main = () => {
         }
 
         canvas.ontouchmove = (event) => {
+            event.preventDefault()
             const x = event.touches[0].clientX
             const y = event.touches[0].clientY
             pressMove(x, y)
