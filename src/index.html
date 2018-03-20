@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sketchpad</title>
+</head>
+
+<body>
+    <canvas id="canvas" class="canvas"></canvas>
+
+    <div class="top-tools">
+        <div class="width-control">
+            <button id="width-large"></button>
+            <button id="width-medium"></button>
+            <button id="width-small"></button>
+        </div>
+    </div>
+
+    <div class="bottom-tools">
+        <button id="brush" class="brush active">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-brush_fill"></use>
+            </svg>
+        </button>
+        <button id="eraser" class="eraser">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-eraser-variant"></use>
+            </svg>
+        </button>
+        <button id="clear" class="clear">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-trash"></use>
+            </svg>
+        </button>
+        <button id="download" class="clear">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-41download"></use>
+            </svg>
+        </button>
+        <div class="palette">
+            <div class="color" id="color1"></div>
+            <div class="color" id="color2"></div>
+            <div class="color" id="color3"></div>
+            <div class="color" id="color4"></div>
+            <div class="color" id="color5"></div>
+            <div class="color" id="color6"></div>
+        </div>
+    </div>
+</body>
+
+</html>
